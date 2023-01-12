@@ -127,3 +127,35 @@
   }
 }
 /*Notification message styles END*/
+
+
+/* footer */
+footer {
+  background: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 40px 35px;
+}
+
+footer h5 {
+  margin: 0;
+  font-size: 30px;
+  
+}
+
+footer div {
+  line-height: 1.5;
+  text-align: right;
+}
+
+footer a {
+  color: var(--secondary);
+}
+
+.fa-github {
+  width: 35px;
+  height: 35px;
+  
+}

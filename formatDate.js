@@ -15,22 +15,17 @@ or M/D/YYYY
 // formateDate('05/2/2013') = '2013-05-02'
 // formatDate('3/17/1888') = '1888-03-17'
 
-const dateList = document.getElementById('dateList');
 
-const dateArray = [
-    '12/30/1997',
-    '8/6/2023',
-    '05/2/2013',
-    '3/17/1888'
-]
-// console.log(dateArray)
+// using Moment.js to set the current date and time in the Header 
+setInterval(function () {
+    document.getElementById('currentDay').innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
+}, 1000);
 
 
-
-const formatDateCustom = (date) => {
-
-
-    let [month, day, year] = date.split('/');
+// this function takes care of formatting the date to YYYY-MM-DD
+function formatDate(date) {
+    
+    let [month, day, year] = date.split('/')
 
     if (month.length === 1) {
         month = '0' + month;
@@ -39,42 +34,16 @@ const formatDateCustom = (date) => {
     if (day.length === 1) {
         day = '0' + day;
     }
+    console.log(day.length)
 
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate
-   
-
-    // // // parse data into javascript Date Object 
-    // // const date = new Date(dateInput);
-
-    // //extract the day,month, year from the date object
-    // const year = date.getFullYear();
-    // let month = date.getMonth(); /*since the function getMonth() returns zero based
-    // we need to add 1 */
-    // month += 1;
-    // const day = date.getDate()
-    
-
-    // //pad the month and day with leading zeros, if necessary
-    // const padMonth = month.toString().padStart(2, '0');
-    // const padDay = day.toString().padStart(2, '0')
-
-    // const formattedDate = `${year}-${padMonth}-${padDay}`;
-    // return formattedDate
-   
 }
 
-// map through date array and create a list item, insert the formatted date from array, append to page
-// dateArray.map(date => {
-//     const listItem = document.createElement('li');
-//     listItem.textContent = formatDate(date)
-//     dateList.appendChild(listItem);
-// })
 
-
-
-// get form by its Id and handle form submission
+// get form by its Id and handle form submission and innerText 
 const form = document.getElementById('myForm');
+const output = document.getElementById('output');
 
 form.addEventListener('submit', function(event) {
     // upon submitting prevent page refresh
@@ -87,23 +56,22 @@ form.addEventListener('submit', function(event) {
 
 // Handle form submission from regular format and custom date submission
 function handleSubmit() {
-    const output = document.getElementById('output');
     const dateInput = document.getElementById('dateInput').value;
-    console.log(dateInput)
+    console.log(dateInput, '01/11/2023')
     const customDate = document.getElementById('customDate').value;
 
 
     // check if dateInput is filled 
     if (dateInput) {
         // format user selected date Input 
-        let formatted = formatDate(dateInput);
-        console.log(formatted)
+        // let formatted = formatDate(dateInput);
+        // console.log(formatted)
         const pageOutput = document.createElement('p')
-        pageOutput.innerText = formatted;
+        pageOutput.innerText = dateInput;
         output.appendChild(pageOutput)
     } else if (customDate) {
         // format user custom date input 
-        let formatted =  formatDateCustom(customDate)
+        let formatted =  formatDate(customDate)
         console.log(formatted)
         const pageOutput = document.createElement('p')
         pageOutput.innerText = formatted;
@@ -111,8 +79,5 @@ function handleSubmit() {
     } else {
         alert('Please select or enter a custom date to continue !')
     }
-
-    
+ 
 }
-
-// page refresh

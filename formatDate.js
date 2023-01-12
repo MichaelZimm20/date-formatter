@@ -51,6 +51,12 @@ form.addEventListener('submit', function(event) {
 
     // handle form submission for both regular date formatting and user custom date
     handleSubmit();
+
+    // timeout interval to show saved message notification
+    $(".notification").addClass("show");
+    setTimeout(function () {
+        $(".notification").removeClass("show");
+    }, 2000);
 })
 
 

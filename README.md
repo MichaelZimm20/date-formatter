@@ -40,7 +40,7 @@ The user will input or select a date that the want to get formatted. The output 
  ## Important Links 
 * GitHub Link: https://github.com/MichaelZimm20/date-formatter
 
-* Live Deployment Link: 
+* Live Deployment Link: https://michaelzimm20.github.io/date-formatter/
 
 ## Questions 
   If you have any questions or concerns, contact:
